@@ -1,0 +1,102 @@
+install MySQL2
+    - done
+install Sequelize
+    - done
+    - needs these packages to connect your Express.js API to a MySQL database
+
+install dotenv package
+    - need this to use environment variables to store sensitive data, like your MySQL username, password, and database name.
+
+Use the schema.sql file in the db folder to creat database using MySQL shell commands
+    - database has been created : ecommerce_db   (show databases)
+
+Use environment variables to store sensitive data, like your MySQL username, password, and database name.
+    -create .env file  --- done
+    -add code          --- done
+
+Load environment variables into the connection.js
+    - done
+
+-include the following Models
+    - Category
+    - Product
+    - ProductTag
+    - Tag
+
+-Need to add column fields for each model described above
+
+    -Category columns
+            id - done
+                Integer - done
+                Doesn't allow null values - done
+                Set as primary key - done
+                Uses auto increment - done
+
+            category_name
+                String - done
+                Doesn't allow null values - done
+
+    -Product columns
+                id - done
+                    Integer - done
+                    Doesn't allow null values - done
+                    Set as primary key - done
+                    Uses auto increment - done
+
+                product_name
+                    String - done
+                    Doesn't allow null values - done
+
+                price
+                    Decimal - done
+                    Doesn't allow null values - done
+                    Validates that the value is a decimal - done
+
+                stock
+                    Integer -done
+                    Doesn't allow null values -done
+                    Set a default value of 10 -done
+                    Validates that the value is numeric -done
+
+                category_id
+                    Integer -done
+                    References the category model's id -done
+
+    -Tag columns
+                id
+                    Integer - done
+                    Doesn't allow null values -done
+                    Set as primary key -done
+                    Uses auto increment -done
+                tag_name
+                    String -done
+
+    -ProductTag
+               id
+                     Integer - done
+                     Doesn't allow null values -done
+                     Set as primary key -done
+                     Uses auto increment -done
+               product_id
+                    Integer -done
+                    References the product model's id -done
+               tag_id
+                    Integer -done
+                    References the tag model's id -done
+
+-use models/index file to create associations between models
+    - Product belongs to Category, as a category can have multiple products
+        but a product can only belong to one category. -done
+    - Category has many Product models. -done
+    - Product belongs to many Tag models. Using the ProductTag through model,
+        allow products to have multiple tags and tags to have many products.
+    - Tag belongs to many Product models.
+
+Fill out the unfinished routes in product-routes.js, tag-routes.js, and category-routes.js
+to perform create, read, update, and delete operations using your Sequelize models.
+
+After creating the models and routes, run npm run seed to seed data to your database so that you can test your routes
+
+Create the code needed in server.js to sync the Sequelize models to the MySQL database on server start.
+    - sequelize Connection Imported - Done
+    - sync the Sequelize models to the MySQL - Done  sequelize.sync({ force: false })
