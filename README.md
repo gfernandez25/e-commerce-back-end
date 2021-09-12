@@ -29,6 +29,8 @@ Please see walk through video
 ## Screenshot
 ![ScreenShot](images/ecomerce-routes.png)
 
+Routes can be tested on Heroku
+https://obscure-tundra-07551.herokuapp.com/api/categories
 
 ## License
 
